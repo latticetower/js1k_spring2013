@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://js1k.com/2013-spring/shim.html -->
+<!-- http://www.maissan.net/articles/simulating-vines -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>JS1k, 1k demo submission [ID]</title>
+		<meta charset="utf-8">
+		<script>
+		function e3(a,d,e,f,g,x,y,k)
+		{
+			l=-1;
+			a.strokeStyle="#06aF01";
+			a.lineWidth=1;
+			a.beginPath();
+			a.moveTo(x,y);
+			a.lineTo(x+f/2,y+g/2);
+			u=(1+1/2/k)/2;
+			v=(1+1/4/k)/2;
+			xc = x+d*u+f*v;
+			yc = y+e*u+g*v;
+		
+			for (var t = 0; t<3.1415*k; t+=0.1)
+			{
+				xxx=-Math.cos(t)*(1-t/3.1415/k);
+				yyy=Math.sin(t)*(1-t/3.1415/k);
+				xxxx=xxx*d+f*yyy;
+				yyyy=xxx*e+g*yyy;
+
+				xx=xc+xxxx*u;
+				yy=yc+yyyy*v;
+				a.lineTo(xx,yy);
+			}
+			a.stroke();
+			a.closePath();
+		}
+		function t(a)
+		{
+			tr(a,100,150,0,-40,0.8,1,1);
+
+		}
+		function tr(a,x,y,u,v,l,p,d)
+		{
+			e3(a,-v*l/2,l*u/2,2*u/3,2*v/3,x,y,3+2*Math.random());
+			e3(a,2*v/4,-2*u/4,
+				2*u/3,2*v/3,
+				x+u/2,
+				y+v/2,3+2*Math.random());
+			if (p>3+4*Math.random()) {
+				a.strokeStyle ="#Ffafaf";
+				a.beginPath();
+				a.moveTo(x+u,y+v);
+				a.arc(x+u+3*l,y+v,5*l,0,2*Math.PI);
+				a.arc(x+u+3*l,y+v+3*l,5*l,0,2*Math.PI);
+				a.arc(x+u,y+v,5*l,0,2*Math.PI);
+				a.arc(x+u,y+v+3*l,5*l,0,2*Math.PI);
+				a.stroke();
+				a.closePath();
+				return;
+			}
+			a.strokeStyle="#FF0000";
+			a.lineWidth=1;
+			a.beginPath();
+			a.moveTo(x,y);
+			var x1=x+u;
+			var y1=y+v;
+			//a.lineTo(x1,y1);
+			a.stroke();
+			a.closePath();
+			
+					
+			var alpha=3.1415/6+Math.random()*0.3;
+			aa=(1+Math.random())/2;
+			bb=(1+Math.random())/2;
+			var u1=l*(u*Math.cos(-aa*alpha)-v*Math.sin(-aa*alpha));
+			var v1=l*(u*Math.sin(-aa*alpha)+v*Math.cos(-aa*alpha));
+			var u2=l*(u*Math.cos(bb*alpha)-v*Math.sin(bb*alpha));
+			var v2=l*(u*Math.sin(bb*alpha)+v*Math.cos(bb*alpha));
+			tr(a,x1,y1,u1,v1,l,p+1,1);
+			
+			tr(a,x1,y1,u2,v2,l,p+1,-1);
+		}
+		</script>
+	</head>
+	<body>
+		<canvas id="c"></canvas>
+		<script>
+				var b = document.body;
+			var c = document.getElementsByTagName('canvas')[0];
+			var a = c.getContext('2d');
+			document.body.clientWidth; // fix bug in webkit: http://qfox.nl/weblog/218   window.onload=(function() {
+		x0 = 200;
+		y0 = 80;
+		w=50;h=30;
+		
+		//e1(a, x0,y0,w,h, 5,-1,-45/180.0,3) ;
+d=2*w;
+e=0;
+f=0;
+g=2*h;
+k=5;
+
+//e2(a,d,e,f,g,x0,y0);
+//e3(a,d,e,f,g,x0,y0,k);
+t(a);
+</script>
+	
+
+</body></html>
